@@ -1,0 +1,16 @@
+server:
+  port: 9001 #端口号
+spring:
+  application:
+    name: myconfig  #要去找寻的配置文件的前缀   比如我要找myconfig-dev
+  cloud:
+    config:
+      uri: http://localhost:9000  #配置中心请求路径
+      label: master   #指定分支
+      profile: dev  #指定用那个环境  比如我要找myconfig-dev
+#暴露所有节点便于访问
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

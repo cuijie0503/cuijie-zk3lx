@@ -10,6 +10,7 @@
     <modules>
         <module>cloud-config</module>
         <module>cloud-eureka</module>
+        <module>client-config</module>
     </modules>
 
     <packaging>pom</packaging>
