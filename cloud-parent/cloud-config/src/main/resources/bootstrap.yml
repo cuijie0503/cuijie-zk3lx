@@ -1,0 +1,11 @@
+server:
+  port: 9000
+spring:
+  application:
+    name: cloud-config
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/cuijie0503/1703E_cloudconfig.git
+          search-paths: config-repository
