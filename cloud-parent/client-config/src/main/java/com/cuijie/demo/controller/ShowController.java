@@ -9,7 +9,7 @@ import javax.print.DocFlavor;
 
 @RestController
 @RequestMapping("/show")
-public class ShowControlelr {
+public class ShowController {
 
     @Value("${env_name}")
     private String envName;
