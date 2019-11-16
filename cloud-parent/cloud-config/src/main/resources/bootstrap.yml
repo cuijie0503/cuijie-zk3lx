@@ -9,5 +9,7 @@ spring:
         git:
           uri: https://github.com/cuijie0503/cuijie-zk3lx.git
           search-paths: config-repository
+          username: cuijie0503
+          password: cuijie05030417
 
 
