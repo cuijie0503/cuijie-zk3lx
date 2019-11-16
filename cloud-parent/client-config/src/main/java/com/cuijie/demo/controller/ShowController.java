@@ -13,6 +13,7 @@ public class ShowController {
 
     @Value("${env_name}")
     private String envName;
+
     @RequestMapping("/env")
     public String showEnv(){
 
