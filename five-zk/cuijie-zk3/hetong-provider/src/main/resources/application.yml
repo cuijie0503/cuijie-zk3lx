@@ -1,0 +1,51 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: hetong-provider
+  main:
+    allow-bean-definition-overriding: true #当遇到同样名字的时候，是否允许覆盖注册
+  datasource:
+    url: jdbc:mysql://localhost:3306/1703a?characterEncoding=utf-8
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    default-property-inclusion: non_null
+    time-zone: GMT+8
+    #redis:
+    # host: 192.168.163.130
+    #port: 6379
+    resources:
+      #指向静态资源
+      static-locations: file:${file.path}
+    servlet:
+      multipart:
+        #上传图片大小限制
+        max-file-size: 10240000
+        #一次请求中图片上传大小限制
+        max-request-size: 10240000
+  jpa:
+    show-sql: true   #打印sql语句
+    hibernate:
+      ddl-auto: update  #如果没有表，就创建；若存在，则更新
+    open-in-view: true   # 避免懒加载异常
+    properties:
+      hibernate.format_sql: true  #格式化sql
+#logging:
+#  file: C:\Users\cuiji\Desktop\logs\student-server.log
+#  level:
+#    com.cuijie.demo.dao: debug
+
+file:
+  #图片文件内存地址
+  path: D:\\pic\\
+  #查看图片接口
+  domain: http://cuijie.com/
+eureka:
+  client:
+    register-with-eureka: true # 是否注册自己的信息到EurekaServer，默认是true
+    fetch-registry: false # 是否拉取其它服务的信息，默认是true
+    service-url: # EurekaServer的地址，现在是自己的地址，如果是集群，需要加上其它Server的地址。
+      defaultZone: http://localhost:10086/eureka

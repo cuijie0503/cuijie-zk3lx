@@ -1,0 +1,23 @@
+server:
+  port: 8082
+spring:
+  datasource:
+    url: jdbc:mysql://192.168.1.114:3306/1703a?useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: root
+  application:
+    name: order-service # 应用名称
+mybatis:
+  type-aliases-package: com.bawei.user.pojo
+  configuration:
+    map-underscore-to-camel-case: true  #字段实体属性映射驼峰转换
+logging:
+  level:
+    com.bawei.user.dao: debug  #sql日志打印
+eureka:
+  client:
+    service-url: # EurekaServer地址
+      defaultZone: http://127.0.0.1:10086/eureka
+  instance:
+    prefer-ip-address: true # 当调用getHostname获取实例的hostname时，返回ip而不是host名称
+    ip-address: 127.0.0.1 # 指定自己的ip信息，不指定的话会自己寻找

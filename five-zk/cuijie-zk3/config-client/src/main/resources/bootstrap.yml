@@ -1,0 +1,10 @@
+server:
+  port: 7072
+spring:
+  application:
+    name: myConfig
+  cloud:
+    config:
+      uri: http://localhost:7071
+      label: master
+      profile: dev
