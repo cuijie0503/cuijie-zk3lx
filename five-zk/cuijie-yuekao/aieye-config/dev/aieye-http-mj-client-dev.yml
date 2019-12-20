@@ -1,0 +1,76 @@
+﻿server:
+  port: 9800
+task:
+  ga:
+    baseFace:
+      time: \* \* \* \* \* \?
+      concurrency: 50
+    crowd:
+      time: \* \* \* \* \* \?
+      concurrency: 50
+threadPool:
+  corePoolSize: 10
+  maxPoolSize: 100
+  queueCapacity: 10
+  waitForTasksToCompleteOnShutdown: true
+  awaitTerminationSeconds: 60
+  threadNamePrefix: aieye-
+
+spring:
+  datasource:
+    name: mysql_aieye
+    type: com.alibaba.druid.pool.DruidDataSource
+    #druid相关配置
+    druid:
+      #监控统计拦截的filters
+      filters: stat
+      driver-class-name: com.mysql.jdbc.Driver
+      #基本属性
+      url: jdbc:mysql://172.22.242.20:3357/witeye_dev?useUnicode=true&characterEncoding=utf-8
+      username: root
+      password: softcan
+      #配置初始化大小/最小/最大
+      initial-size: 1
+      min-idle: 1
+      max-active: 20
+      #获取连接等待超时时间
+      max-wait: 60000
+      #间隔多久进行一次检测，检测需要关闭的空闲连接
+      time-between-eviction-runs-millis: 60000
+      #一个连接在池中最小生存的时间
+      min-evictable-idle-time-millis: 300000
+      validation-query: SELECT 'x'
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      #打开PSCache，并指定每个连接上PSCache的大小。oracle设为true，mysql设为false。分库分表较多推荐设置为false
+      pool-prepared-statements: false
+      max-pool-prepared-statement-per-connection-size: 20
+  data:
+    mongodb:
+      #         database: test
+      # uri: mongodb://deviceroot:deviceroot@127.0.0.1:27017/devicelog
+      uri: mongodb://devicerootus:deviceroot@172.22.241.55:27017/devicelog
+  #          uri: mongodb://localhost:27017/test
+
+redis:
+  maxTotal: 50
+  hostip: 172.22.241.55
+  port: 6379
+  db: 0
+  password:
+
+fjpush:
+  waitTime: 1000
+  batchCount: 100
+  scanPath: /bak
+  alreadyPushPath: /alreadyPush
+  ver: 1.7.3
+  secretKey: 29 6C D6 EB 2C A9 43 21 AB EF 57 5F 4C FC 10 EC
+  appId: 8ae322e3
+  appSecret: cb0642b2fb0404c3ae1c731195d6b664
+  host: http://218.85.72.212:444
+  loginUrl: /api/login
+  pushFaceUrl: /api/uptest/mj #/api/upload/mj
+
+

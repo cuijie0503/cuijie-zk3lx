@@ -1,0 +1,50 @@
+server:
+  port: 7070
+
+spring:
+  application:
+    name: fegin-server
+  datasource:        #数据源
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql:///1703a?characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B8
+  jpa:
+    show-sql: true   #打印sql语句
+    hibernate:
+      ddl-auto: update  #如果没有表，就创建；若存在，则更新
+    open-in-view: true   # 避免懒加载异常
+    properties:
+      hibernate.format_sql: true  #格式化sql
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:10086/eureka,http://localhost:10087/eureka
+    fetch-registry: true #从注册中心拉取注册表
+
+feign:
+  hystrix:
+    enabled: true  #开启Feign的熔断功能
+  client:
+    config:
+      default:
+        connectTimeout: 12000
+        readTimeout: 12000
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 10000
+
+
+#ribbon:
+#  eureka:
+#    enabled:  false
+
+#my-user-service:
+#  ribbon:
+#    listOfServers: http://localhost:6060,http://localhost:6066

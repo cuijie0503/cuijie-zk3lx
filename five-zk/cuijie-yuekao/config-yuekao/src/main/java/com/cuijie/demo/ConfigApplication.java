@@ -3,17 +3,16 @@ package com.cuijie.demo;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.cloud.openfeign.EnableFeignClients;
-import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.cloud.config.server.EnableConfigServer;
 
-@EnableDiscoveryClient
 @SpringBootApplication
-@EnableFeignClients
-public class FeginApplication {
+@EnableConfigServer
+public class ConfigApplication {
 
     public static void main(String[] args) {
 
-        SpringApplication.run(FeginApplication.class,args);
+        SpringApplication.run(ConfigApplication.class, args);
     }
+
 
 }

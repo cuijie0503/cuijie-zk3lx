@@ -1,0 +1,17 @@
+oss:
+  endpoint: http://oss-cn-beijing.aliyuncs.com
+  accessKeyId: LTAIE1KRB3weCWjT
+  accessKeySecret: 3E74dFGj7X1gdSDv44wEkdz8eNu5kK
+  #accessKeyId: LTAICPMN1mckihAW
+  #accessKeySecret: Vz1fFZD9IJJxXneQdmosbvbRb9VCEq
+  defaultBucketName: suzongye01
+  # url访问过期时间 1小时
+  expiration: 3600000
+  defaultAccessHead: http://suzongye01.oss-cn-beijing.aliyuncs.com/
+
+server:
+  port: 9850
+
+
+
+

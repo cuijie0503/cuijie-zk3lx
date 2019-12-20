@@ -1,0 +1,82 @@
+# 默认的profile为dev，其他环境通过指定启动参数使用不同的profile，比如：
+#测试环境：java -jar my-spring-boot.jar --spring.profiles.active=test
+#生产环境：java -jar my-spring-boot.jar --spring.profiles.active=prod
+server:
+  port: 8082   #端口号
+logging:
+  #  file: C:\Users\cuiji\Desktop\logs\goods-zk2.log          #日志文件所在
+  level:
+    org.springframework.data.mongodb.core.MongoTemplate: DEBUG   #打印MongoDB的日志
+    com.cuijie.demo.dao: debug   #打印dao层sql 日志
+
+spring:
+  application:
+    name: order-provider     #服务名称
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/1703e      #mongodb连接
+
+  datasource:        #数据源
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql:///1703a?characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B8
+  jpa:
+    show-sql: true   #打印sql语句
+    hibernate:
+      ddl-auto: update  #如果没有表，就创建；若存在，则更新
+    open-in-view: true   # 避免懒加载异常
+    properties:
+      hibernate.format_sql: true  #格式化sql
+
+  jackson:    #数据序列化处理
+    date-format: yyyy-MM-dd HH:mm:ss
+    default-property-inclusion: non_null
+    time-zone: GMT+8     #时区
+
+
+  #  redis:    #redis
+  #    host: localhost
+  #    port: 6379
+
+  resources:   #上传
+    #指向静态资源
+    static-locations: file:${file.path}
+
+
+  servlet:
+    multipart:
+      #上传图片大小限制
+      max-file-size: 10240000
+      #一次请求中图片上传大小限制
+      max-request-size: 10240000
+
+eureka:
+  client:
+    fetch-registry: true   #从注册中心拉出注册列表
+    service-url:    #注册中心地址
+      defaultZone: http://localhost:10086/eureka,http://localhost:10087/eureka
+
+mybatis:   #mapper.xml所在
+  mapper-locations: classpath:mapper/*.xml
+
+file:
+  #图片文件内存地址
+  path: D:\\pic\\
+  #查看图片接口
+  domain: http://cuijie.com/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

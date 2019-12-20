@@ -1,0 +1,104 @@
+﻿#加密配置
+jasypt:
+  encryptor:
+    password: lengleng
+
+server:
+  tomcat:
+    max-threads: 500 # Maximum amount of worker threads.
+    min-spare-threads: 50 # Minimum amount of worker threads
+
+spring:
+  redis:
+    remote: false        #cachecloud 获取
+    host: 172.22.241.55
+    port: 6379
+    password:
+  rabbitmq:
+    host: 119.29.128.150
+    port: 5673
+    username: lkd
+    password: lkd123
+  http:
+    multipart:
+      max-file-size: 1000MB
+      max-request-size: 1000MB
+
+redis:
+  host: 10.20.1.182
+  port: 6399
+  password: jffc3501
+  cache:
+    expiration: 7200
+
+ribbon:
+  eager-load:
+    enabled: true
+    clients: aieye-auth,aieye-upms-service
+  Httpclient:
+    enabled: false
+  OkHttp:
+    enabled: true
+  ReadTimeout: 10000
+  ConnectTimeout: 10000
+
+feign:
+  hystrix:
+    enabled: true
+  okhttp:
+    enabled: true
+  httpclient:
+    enabled: false
+  client:
+    config:
+      feignName:
+        connectTimeout: 30000
+        readTimeout: 30000
+  compression:
+    request:
+      enabled: true
+    response:
+      enabled: true
+
+hystrix:
+  threadpool:
+    default:
+      coreSize: 500
+      maxQueueSize: 1000
+      queueSizeRejectionThreshold: 800
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000
+
+#监控短点配置
+management:
+  security:
+    enabled: false
+endpoints:
+  actuator:
+    enabled: true
+  shutdown:
+    enabled: false
+
+#文件服务配置
+fileserver:
+  fileServerUrl: http://10.20.2.13:9850/fileManage
+  requestScheme: http
+  requestServerPort:
+  requestServerUrl: https://aieye.cndrealty.com
+  fileAppCode: file
+  fileBasePath: /home/fileupdate/cmbactivity
+  oauthSercretBase: Basic c29mdGNhbjE6c29mdGNhbnNlY3JldDE=
+  oauthUsername: 13255948476
+  oauthPassword: 111111
+  oauthServerUrl: http://oauth.cndsaas.com:81/oauth/token
+dfsfileserver:
+  remoteurl: http://10.20.2.19:8010/aieyedfs
+baidu:
+  ai:
+    baidu_appkey: mCkfnpFt7aHDT2CldUaiveMc
+    baidu_appSecret: L6uon8Xpro25waqKm72UvVIdqYmHjOom
+

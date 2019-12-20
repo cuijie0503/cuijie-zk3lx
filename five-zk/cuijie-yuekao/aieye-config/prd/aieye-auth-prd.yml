@@ -1,0 +1,45 @@
+server:
+  port: 3000
+
+# datasoure默认使用JDBC
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://10.20.2.13:3306/aieye2?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull
+    username: root
+    password: jffc3501
+  freemarker:
+    allow-request-override: false
+    allow-session-override: false
+    cache: true
+    charset: UTF-8
+    check-template-location: true
+    content-type: text/html
+    enabled: true
+    expose-request-attributes: false
+    expose-session-attributes: false
+    expose-spring-macro-helpers: true
+    prefer-file-system-access: true
+    suffix: .ftl
+    template-loader-path: classpath:/templates/
+
+ignore:
+  urls:
+   - /authentication/**
+   - /**/*.css
+   - /social
+   - /signin
+   - /signup
+   - /info
+   - /health
+   - /metrics/**
+   - /loggers/**
+   - /mobile/token
+   - /wechat/token
+   - /phonePassword/token
+   - /phonePassword/phoneRegister
+   - /admin/user/codeAndPhoneRegister
+   - /admin/user/codeRegister
+   - /admin/user/phoneRegister
+
+
