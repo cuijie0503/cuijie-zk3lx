@@ -1,0 +1,69 @@
+﻿server:
+  port: 8081
+
+spring:
+  datasource:
+    mysql:
+      jdbc-url: jdbc:mysql://172.22.242.20:3357/yingbao?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&allowMultiQueries=true&serverTimezone=UTC
+      driver-class-name: com.mysql.jdbc.Driver
+      username: root
+      password: softcan
+      pool-name: HikariPool-Mysql
+      minimum-idle: 10
+      maximum-pool-size: 15
+      auto-commit: true
+      read-only: false
+      connection-timeout: 60000
+      idle-timeout: 60000
+      validation-timeout: 60000
+      login-timeout: 5
+    oracle:
+      jdbc-url: jdbc:oracle:thin:@44.80.13.38:1521:orcl
+      driver-class-name: oracle.jdbc.driver.OracleDriver
+      username: syrk
+      password: syrk
+      pool-name: HikariPool-Oracle
+      minimum-idle: 10
+      maximum-pool-size: 10
+      auto-commit: true
+      read-only: false
+      connection-timeout: 60000
+      idle-timeout: 60000
+      validation-timeout: 60000
+      login-timeout: 5
+  redis:
+    host: 10.30.1.8
+    port: 6399
+    database: 10
+    password: hysd123
+    lettuce:
+      pool:
+        max-active: 8
+        max-idle: 5
+        min-idle: 0
+        max-wait: -1ms
+    timeout: 10000ms
+## 该配置节点为独立的节点，如果将这个配置放在spring的节点下，导致配置无法被识别
+logging:
+  config: classpath:logback-spring.xml
+
+mybatis:
+  mapper-locations:
+    - classpath*:mapper/*.xml
+  config-location: classpath:mybatis-config.xml
+  type-aliases-package: com.cndrealty.entity
+
+frontPath: f
+#定时任务线程池
+scheduling-pool: 100
+#线程池
+task:
+  pool:
+    corePoolSize: 100
+    maxPoolSize: 500
+    keepAliveSeconds: 500
+    queueCapacity: 500
+sdk:
+  endPoint:
+  accessKeyId:
+  accessKeySecret:

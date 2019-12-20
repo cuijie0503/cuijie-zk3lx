@@ -1,0 +1,132 @@
+﻿#加密配置
+jasypt:
+  encryptor:
+    password: lengleng 
+
+server:
+  tomcat:
+    max-threads: 500 # Maximum amount of worker threads.
+    min-spare-threads: 50 # Minimum amount of worker threads
+
+spring:
+  redis:
+    remote: false        #cachecloud 获取
+    host: 172.22.241.55
+    port: 6379
+    password:
+  rabbitmq:
+    host: 172.22.241.55
+    port: 5672
+    username: admin
+    password: jffc3501
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 100MB
+
+redis:
+  host: 172.22.241.55
+  port: 6379
+  password:
+  cache:
+    expiration: 7200
+
+ribbon:
+  eager-load:
+    enabled: true
+    clients: aieye-auth,aieye-upms-service
+  Httpclient:
+    enabled: false
+  OkHttp:
+    enabled: true
+  ReadTimeout: 10000
+  ConnectTimeout: 10000
+
+feign:
+  hystrix:
+    enabled: true
+  okhttp:
+    enabled: true
+  httpclient:
+    enabled: false
+  client:
+    config:
+      feignName:
+        connectTimeout: 30000
+        readTimeout: 30000
+  compression:
+    request:
+      enabled: true
+    response:
+      enabled: true
+
+hystrix:
+  threadpool:
+    default:
+      coreSize: 500
+      maxQueueSize: 1000
+      queueSizeRejectionThreshold: 800
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000
+
+#监控短点配置
+management:
+  security:
+    enabled: false
+endpoints:
+  actuator:
+    enabled: true
+  shutdown:
+    enabled: false
+
+#文件服务配置
+fileserver:
+  fileServerUrl: http://172.22.244.148:9850/fileManage
+  requestScheme: http
+  requestServerPort:
+  requestServerUrl: https://anxiang.cndrealty.com
+  fileAppCode: file
+  fileBasePath: /home/fileupdate/cmbactivity
+  oauthSercretBase: Basic c29mdGNhbjE6c29mdGNhbnNlY3JldDE=
+  oauthUsername: 13255948476
+  oauthPassword: 111111
+  oauthServerUrl: http://oauth.cndsaas.com:81/oauth/token
+dfsfileserver:
+  endPoint: http://172.22.244.58:8010
+  accessKeyId: PghL9Toq10VYa7st
+  accessKeySecret: ZOzUZxKFtOtgAj7W98ruPNO6Qj2PRt9z
+baidu:
+  ai:
+    baidu_appkey: mCkfnpFt7aHDT2CldUaiveMc
+    baidu_appSecret: L6uon8Xpro25waqKm72UvVIdqYmHjOom
+
+collect:
+    imgUrlHead: http://59.57.252.26:10080/getImage
+    wechatType: wechatType123456
+    tenantId: tenantId123456
+
+policy:
+    ftp:
+        hostname: 192.168.253.19
+        port: 21
+        username: 306908028@qq.com
+        password: su547755
+        tempDir: D:\\gaPush
+        bakDir: D:\\bak
+        key: 296CD6EB2CA94321ABEF575F4CFC10EC
+        zipNameHead: 04-91350203MA31DNLC9P-1.5.1-
+        pushFtpPath: /
+        gaFtpPush: false
+        searchTotal: 50
+        waitTime: 1000
+        isPush: false
+	    zipNameHeadForMJ: 03-91350203MA31DNLC9P-1.7.3-
+	    tempDirForMJ: D:\\gaPushForHttpForMJ
+        bakDirForMJ: D:\\bakForHttpForMJ
+	
+
+

@@ -1,0 +1,154 @@
+server:
+  port: 8081
+
+spring:
+    datasource:
+        name: mysql_aieye
+        type: com.alibaba.druid.pool.DruidDataSource
+        #druid相关配置
+        druid:
+          #监控统计拦截的filters
+          filters: stat
+          driver-class-name: com.mysql.jdbc.Driver
+          #基本属性
+          url: jdbc:mysql://172.22.241.55:3306/witeye?useUnicode=true&characterEncoding=utf-8
+          username: root
+          password: jffc3501
+          #配置初始化大小/最小/最大
+          initial-size: 1
+          min-idle: 1
+          max-active: 20
+          #获取连接等待超时时间
+          max-wait: 60000
+          #间隔多久进行一次检测，检测需要关闭的空闲连接
+          time-between-eviction-runs-millis: 60000
+          #一个连接在池中最小生存的时间
+          min-evictable-idle-time-millis: 300000
+          validation-query: SELECT 'x'
+          test-while-idle: true
+          test-on-borrow: false
+          test-on-return: false
+          #打开PSCache，并指定每个连接上PSCache的大小。oracle设为true，mysql设为false。分库分表较多推荐设置为false
+          pool-prepared-statements: false
+          max-pool-prepared-statement-per-connection-size: 20
+    data:
+        mongodb:
+#         database: test
+        # uri: mongodb://deviceroot:deviceroot@127.0.0.1:27017/devicelog
+         uri: mongodb://devicerootus:deviceroot@172.22.241.55:27017/devicelog
+#          uri: mongodb://localhost:27017/test
+
+#    rabbitmq:
+#      addresses: 119.29.128.150:5673
+#      username: lkd
+#      password: lkd123
+#    cloud:
+#      stream:
+#        bindings:
+#          myMessage:
+#            group: log
+#            content-type: application/json
+#            destination: openDoorLog
+#          logOutput:
+#            destination: openDoorLog
+
+## 该配置节点为独立的节点，如果将这个配置放在spring的节点下，导致配置无法被识别
+mybatis:
+  mapper-locations: classpath:mapping/*.xml  #注意：一定要对应mapper映射xml文件的所在路径
+  type-aliases-package: com.cndrealty.ai.model  # 注意：对应实体类的路径
+
+#pagehelper分页插件
+pagehelper:
+    helperDialect: mysql
+    reasonable: true
+    supportMethodsArguments: true
+    params: count=countSql
+redis:
+    maxTotal: 50
+    hostip: 127.0.0.1
+    port: 6379
+    db: 1
+    password:
+
+frontPath: f
+
+#调用者标识
+appid: apptestappid
+#调用者密钥
+appsecret: Y8O6SDQuasdwq21
+
+# 开放api暂时使用配置文件
+openapi:
+    appid: apptestappid
+    appsecret: Y8O6SDQuasdwq21
+
+# 地网开放api
+dw:
+    appid: apptestappid
+    appsecret: Y8O6SDQuasdwq21
+    url: http://172.22.241.55:10080/rentalHouse
+    addUserUrl: /personDispatchRegister
+    modifyUserUrl: /modifyBukongPeople
+    deleteUserUrl: /modifyBukongPeople
+    checkPhotoUrl: /checkPhoto
+    gateServiceUrl: /gateService
+    modifyPhoneUrl: /modifyphone
+# 设备产商 地网:dw 粹视:cs 海康 kk 巨龙jvt
+device:
+    defaultManufactory: dw
+#推送是否是正式环境
+jpushIsProduct: false
+
+# 粹视相关配置
+cs:
+    # 记录推送
+    alarmServer:
+        host: 58.246.9.50
+        port: 12000
+        userName: SZY
+        password: 888888
+        userType: 0
+        contentFormat: 1
+        picContent: 0
+        alarmDataCacheDay: 5
+        recordType: 0
+        heatBeatTime: 10000
+        timeout: 30000
+    # 人员webservice
+    webservice:
+        url: http://127.0.0.1:88
+        personGroupId: 8
+        addUserUrl: /HS/services/AddSuspectPersonInfo?wsdl
+        addUserPhotoUrl: /HS/services/AddSuspectPersonPicture?wsdl
+        modifyUserUrl: /HS/services/AlterSuspectPersonInfo?wsdl
+        deleteUserUrl: /HS/services/DeleteSuspectPersonInfo?wsdl  
+    # 微信接口
+    wechat:
+        url: 58.246.9.50:80/its/wx/api.php
+        userName: jf_test
+        passowrd: 111111
+        checkPhotoMethod: wx/getFaceFeature
+
+hk: 
+    appid: 9af8b4d4
+    appsecret: 0b446bd7f4a944e690d9801e8b807b16
+    url: http://172.22.5.15:80
+    addUserUrl: /openapi/service/fas/personInfo/addPersonInfoIntoGroup
+    modifyUserUrl: /openapi/service/fas/personInfo/modifyPersonInfo
+    deleteUserUrl: /openapi/service/fas/personInfo/deletePersonInfo
+    defaultUserUuidUrl: /openapi/service/base/user/getDefaultUserUuid
+    getCamerasExUrl: /openapi/service/vss/res/getCamerasEx
+    personGroupId: 2
+    mq:
+        url: failover:(tcp://172.22.5.15:61618)?timeout=2000
+        target: openapi.fas.topic
+
+jvt:
+    port: 8011
+    
+httpserver:
+    port: 6868
+    map: 
+        apptestappid: Y8O6SDQuasdwq21
+        shangdongmeidi: Y8O6SDQuasdwq23
+    

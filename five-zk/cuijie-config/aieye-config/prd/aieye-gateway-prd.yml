@@ -1,0 +1,74 @@
+server:
+  port: 8080
+
+spring:
+  zipkin:
+    rabbitmq:
+      queue: zipkin
+  sleuth:
+    sampler:
+      percentage: 0.2
+
+zuul:
+  ribbon:
+    eager-load:
+      enabled: true
+      clients: aieye-auth,aieye-upms-service,aieye-demo-service,aieye-base-api-service,aieye-deviceservice
+  ignoredServices: '*'
+  host:
+    connect-timeout-millis: 60000
+    socket-timeout-millis: 60000
+  ratelimit:
+    key-prefix: pig-ratelimite
+    enabled: true
+    repository: REDIS
+    behind-proxy: true
+    policies:
+      pig-upms-service:
+        limit: 100
+        quota: 100
+        refresh-interval: 3
+  hystrix:
+    command:
+      default:
+        execution:
+          isolation:
+            timeoutTnMilliseconds: 60000
+
+security:
+  encode:
+    key: '1234567887654321' #必须16位
+  validate:
+    code: true
+    preview: false
+  sessions: stateless
+  oauth2:
+    client:
+      client-id: aieye
+      client-secret: aieyexh
+    resource:
+      jwt:
+         key-uri: ${security.auth.server}/oauth/token_key #解析jwt令牌所需要密钥的地址
+
+ignore:
+  urls:
+    - /mobile/**
+    - /auth/**
+    - /admin/code/*
+    - /admin/smsCode
+    - /admin/user/info
+    - /admin/menu/userMenu
+    - /swagger-resources/**
+    - /swagger-ui.html
+    - /*/v2/api-docs
+    - /api/file/imageFile
+    - /swagger/api-docs
+    - /webjars/**
+    - /
+    - /fileservice/**
+    - /admin/user/codeAndPhoneRegister
+    - /admin/user/codeRegister
+    - /httpserver/deviceapi/*
+    - /api/f/api/h5/v2/police/addressInfo
+  clients:
+    - app
